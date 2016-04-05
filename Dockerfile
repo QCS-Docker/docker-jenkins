@@ -34,7 +34,7 @@ RUN curl -fL https://github.com/krallin/tini/releases/download/v0.5.0/tini-stati
 COPY init.groovy /usr/share/jenkins/ref/init.groovy.d/tcp-slave-agent-port.groovy
 
 ARG JENKINS_VERSION
-ENV JENKINS_VERSION ${JENKINS_VERSION:-2.0-beta-1}
+ENV JENKINS_VERSION ${JENKINS_VERSION:2.0-beta-2}
 ARG JENKINS_SHA
 ENV JENKINS_SHA ${JENKINS_SHA:-ee60952941668f2b08b668b58c19e0b0ecee16df}
 
