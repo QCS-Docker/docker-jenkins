@@ -31,12 +31,14 @@ ENV TINI_SHA 066ad710107dc7ee05d3aa6e4974f01dc98f3888
 RUN curl -fL https://github.com/krallin/tini/releases/download/v0.5.0/tini-static -o /bin/tini && chmod +x /bin/tini \
   && echo "$TINI_SHA /bin/tini" | sha1sum -c -
 
-COPY init.groovy /usr/share/jenkins/ref/init.groovy.d/tcp-slave-agent-port.groovy
+# COPY init.groovy /usr/share/jenkins/ref/init.groovy.d/tcp-slave-agent-port.groovy
 
 ARG JENKINS_VERSION
-ENV JENKINS_VERSION ${JENKINS_VERSION:2.0-beta-2}
+ENV JENKINS_VERSION ${JENKINS_VERSION:-2.0-beta-2}
 ARG JENKINS_SHA
-ENV JENKINS_SHA ${JENKINS_SHA:-ee60952941668f2b08b668b58c19e0b0ecee16df}
+ENV JENKINS_SHA ${JENKINS_SHA:-55c08fd3d53a34998daab25c2e6b638b7d479d29}
+
+#echo $JENKINS_VERSION
 
 
 # could use ADD but this one does not check Last-Modified header 
